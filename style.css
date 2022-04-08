@@ -1,0 +1,9 @@
+body
+
+.container div {
+    display: inline-block;
+    color: red;
+    border: 1px solid black;
+    margin: 0 1em 1em 0;
+    padding: 0.5em
+}

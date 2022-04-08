@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Charades or Pictionary</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="style.css"">
+</head>
+<body>
+    <h1>Pictionary</h1>
+    <div id="departments" class="options">
+    </div>
+    <script>
+        const departments = [
+            "bikes",
+            "blacksmithing",
+            "ceramics",
+            "enameling",
+            "fire and performance",
+            "poundry",
+            "glass blowing",
+            "glass casting and coldworking",
+            "glass flameworking",
+            "glass fusing and slumping",
+            "jewelry",
+            "kinetics and electronics",
+            "leather, textiles, and fine arts",
+            "machine mhop",
+            "neon and light",
+            "stoneworking",
+            "welding",
+            "woodworking"
+        ]
+        for (i=0;i<departments.length;i++) {
+            document.getElementById('departments').innerHTML += "<div>" + departments[i] + "</div>";
+        }
+    </script>
+    <div id="departments" class="container">
+
+    </div>
+</body>
+</html>
