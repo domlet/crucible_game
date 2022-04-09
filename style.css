@@ -1,9 +1,59 @@
-body
-
-.container div {
+body {
+    font-family: Hind, Arial, Helvetica, sans-serif;
+    font-size: larger;
+    margin: 3em;
+    background-color: black;
+    color: whitesmoke;
+}
+div {
+    margin: 0;
+    padding: 0;
+}
+.options div:hover {
+    border: 3px solid whitesmoke;
+}
+.instructions {
+    font-style: italic;
+    margin: 1em .5em 1em 0;
+}
+.hidden {
+    visibility:hidden
+}
+.options div {
     display: inline-block;
-    color: red;
-    border: 1px solid black;
-    margin: 0 1em 1em 0;
-    padding: 0.5em
+    border: 3px solid gray;
+    margin: 0 .5em .5em .5em;
+    padding: .5em .9em;
+    border-radius: .5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+#play div {
+    font-size: 500%;
+    padding: .1em 1em;
+}
+a {
+    color: white;
+}
+.itemOn {
+    color: black;
+    background-color: whitesmoke;
+}
+/* Simple Looping Background Color Animation
+https://techstacker.com/how-to-loop-background-color-animation-css/ */
+.colorful {
+    color: black;
+	animation-name: backgroundColorPalette;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear; 
+	/* linear is enabled default, it’s not necessary to add it make it work but it can make your code more expressive */
+}
+@keyframes backgroundColorPalette {
+	0% { background: #ee6055; }
+	25% { background: #60d394; }
+	50% { background: #aaf683; }
+	75% { background: #ffd97d; }
+	100% { background: #ff9b85; }
 }

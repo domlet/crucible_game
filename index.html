@@ -5,40 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Charades or Pictionary</title>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="style.css"">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-    <h1>Pictionary</h1>
-    <div id="departments" class="options">
-    </div>
+    
+    <!-- GAME -->
+    <div class="instructions">Choose game:</div>
+    <div id="games" class="options"></div>
+    <!-- CATEGORIES -->
+    <div class="instructions">Choose departments:</div>
+    <div id="departments" class="options"></div>
+    
     <script>
+        const games = [
+            "Charades",
+            "Pictionary"
+        ]
         const departments = [
-            "bikes",
             "blacksmithing",
             "ceramics",
-            "enameling",
-            "fire and performance",
-            "poundry",
-            "glass blowing",
-            "glass casting and coldworking",
-            "glass flameworking",
-            "glass fusing and slumping",
+            "foundry",
             "jewelry",
-            "kinetics and electronics",
-            "leather, textiles, and fine arts",
-            "machine mhop",
-            "neon and light",
-            "stoneworking",
-            "welding",
+            "kinetics and electronics", // spaces cause a problem for id
             "woodworking"
         ]
+        const prompts = {
+            "department": "ceramics",
+            "prompts": [
+                "slip",
+                "handbuilding",
+                "slab",
+                "coil",
+                "pinch pot",
+                "bone dry",
+                "silica",
+                "glaze",
+                "drying",
+                "pattern",
+                "kiln"
+            ],
+            "department": "blacksmithing",
+                "prompts": [
+                    "smithy",
+            ]
+        }
+        // List all games.
+        for (i=0;i<games.length;i++) {
+            document.getElementById('games').innerHTML += 
+            "<div id='" + games[i] + "' onclick='selectGame()'>" + games[i] + "</div>";
+        }
+        // List all departments.
         for (i=0;i<departments.length;i++) {
-            document.getElementById('departments').innerHTML += "<div>" + departments[i] + "</div>";
+            document.getElementById('departments').innerHTML += 
+            "<div id='" + departments[i] + "' onclick='selectCategory()'>" + departments[i] + "</div>";
+        }
+        // Create empty arrays.
+        var gamesOn = []
+        var departmentsOn = []
+        var promptsOn = []
+        
+        // Choose one game.
+        function selectGame(){
+            const clickedItem = event.target.id            
+            for (i=0;i<gamesOn.length;i++) {
+                document.getElementById(gamesOn[i]).classList.remove('itemOn')
+            }
+            gamesOn.splice(0, gamesOn.length)
+            gamesOn.push(clickedItem)
+            event.target.classList.add("itemOn")
+            console.log("Selected " + clickedItem + ".")
+            console.log("Final result:")
+            console.log(gamesOn)
+        }
+        // Create functions to add departments.
+        function selectCategory(){
+            const clickedItem = event.target.id            
+            if (departmentsOn.indexOf(clickedItem) <= -1) {
+                departmentsOn.push(clickedItem)
+                event.target.classList.add("itemOn")
+                console.log("Added " + clickedItem + ".")
+            } else {
+                departmentsOn = departmentsOn.filter(department => department !== (clickedItem))
+                event.target.classList.remove("itemOn")
+                console.log("Removed " + clickedItem + ".")
+            }
+            console.log("Final result:")
+            console.log(departmentsOn)
+        }        
+        // Create functions to add prompts.
+        function play(){
+            document.getElementById('departments').innerHTML = ""
+            for (i=0;i<departmentsOn.length;i++) {
+                document.getElementById('departments').innerHTML += 
+                "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
+            }
+            event.target.classList.remove("colorful")
+            document.getElementById('playArea').innerHTML = "item goes here"
+            // var instructionsArray = document.getElementsByClassName('instructions')
+            // for (i=0;i<instructionsArray.length;i++) {
+            //     instructionsArray[i].classList.add('hidden')
+            //     console.log('hi')
+            // }
         }
     </script>
-    <div id="departments" class="container">
+    
+    <div class="instructions">Click:</div>
+        <div id="play" class="options">
+            <div id="playArea" onclick='play()' class="colorful">play</div>
+        </div>
+    <div class="instructions"><a href="" onclick="">Start over</a>.</div>
 
-    </div>
 </body>
 </html>
