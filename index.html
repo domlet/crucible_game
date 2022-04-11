@@ -11,11 +11,11 @@
 </head>
 <body>
     
-    <!-- GAME -->
-    <div class="instructions">Choose game:</div>
+    <!-- GAMES -->
+    <div id="gamesInstructions" class="instructions">Choose game:</div>
     <div id="games" class="options"></div>
-    <!-- CATEGORIES -->
-    <div class="instructions">Choose departments:</div>
+    <!-- DEPARTMENTS -->
+    <div id="departmentsInstructions" class="instructions">Choose departments:</div>
     <div id="departments" class="options"></div>
     
     <script>
@@ -31,26 +31,48 @@
             "kinetics and electronics", // spaces cause a problem for id
             "woodworking"
         ]
-        const prompts = {
-            "department": "ceramics",
-            "prompts": [
-                "slip",
-                "handbuilding",
-                "slab",
-                "coil",
-                "pinch pot",
-                "bone dry",
-                "silica",
-                "glaze",
-                "drying",
-                "pattern",
-                "kiln"
-            ],
-            "department": "blacksmithing",
-                "prompts": [
-                    "smithy",
-            ]
-        }
+        const allPrompts = [
+            { 'blacksmithing' : [
+                "sample blacksmithing prompt 1",
+                "sample blacksmithing prompt 2",
+                "sample blacksmithing prompt 3" ]
+            },
+            { 'ceramics' : [
+                "score and slip",
+                "use two pinched pots to handbuild a head and body",
+                "use sticks to roll a slab with even thickness",
+                "build a bowl using a coil and a mold",
+                "pieces are most brittle when they are bone dry",
+                "clean your tools and put them away",
+                "wipe down your canvas with a large sponge",
+                "silica dust is harmful to inhale",
+                "don't forget about a piece you put in front of a fan",
+                "when you paint on the glaze, everything appears green",
+                "use a stamp to create a pattern on the clay",
+                "a piece with an air bubble can explode in the kiln" ]
+            },
+            { 'foundry' : [
+                "sample foundry prompt 1",
+                "sample foundry prompt 2",
+                "sample foundry prompt 3" ]
+            },
+            { 'jewelry' : [
+                "sample jewelry prompt 1",
+                "sample jewelry prompt 2",
+                "sample jewelry prompt 3" ]
+            },
+            { 'kineticsandelectronics' : [
+                "sample kinetics and electronics prompt 1",
+                "sample kinetics and electronics prompt 2",
+                "sample kinetics and electronics prompt 3" ]
+            },
+            { 'woodworking' : [
+                "using a gouge against the grain",
+                "never drop a gouge on the concrete floor",
+                "trace a pattern onto a piece of wood",
+                "seal a project " ]
+            }
+        ]
         // List all games.
         for (i=0;i<games.length;i++) {
             document.getElementById('games').innerHTML += 
@@ -94,24 +116,34 @@
             console.log("Final result:")
             console.log(departmentsOn)
         }        
-        // Create functions to add prompts.
+        // When user clicks the 'play' button...
         function play(){
+            // Display selected categories only.
+            document.getElementById('games').innerHTML = ""
+            for (i=0;i<gamesOn.length;i++) {
+                document.getElementById('games').innerHTML += 
+                "<div id='" + gamesOn[i] + "' class='itemOn'>" + gamesOn[i] + "</div>";
+            }
             document.getElementById('departments').innerHTML = ""
             for (i=0;i<departmentsOn.length;i++) {
                 document.getElementById('departments').innerHTML += 
                 "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
             }
+            // Modify the instructions.
+            document.getElementById('gamesInstructions').innerHTML = "Let's play:"
+            document.getElementById('departmentsInstructions').innerHTML = "Categories include:"
+            document.getElementById('playInstructions').innerHTML = ""
+            // Display game prompts.
             event.target.classList.remove("colorful")
-            document.getElementById('playArea').innerHTML = "item goes here"
-            // var instructionsArray = document.getElementsByClassName('instructions')
-            // for (i=0;i<instructionsArray.length;i++) {
-            //     instructionsArray[i].classList.add('hidden')
-            //     console.log('hi')
-            // }
+            for (i=0;i<departmentsOn.length;i++) {
+            }
+            console.log(JSON.stringify.allPrompts)
+            console.log('hi')
+            // document.getElementById('playArea').innerHTML = JSON.stringify.allPrompts["ceramics"][1]
         }
     </script>
     
-    <div class="instructions">Click:</div>
+    <div id="playInstructions" class="instructions">Click:</div>
         <div id="play" class="options">
             <div id="playArea" onclick='play()' class="colorful">play</div>
         </div>
