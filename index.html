@@ -86,7 +86,6 @@
         // Create empty arrays.
         var gamesOn = []
         var departmentsOn = []
-        var promptsOn = []
         
         // Choose one game.
         function selectGame(){
@@ -98,10 +97,9 @@
             gamesOn.push(clickedItem)
             event.target.classList.add("itemOn")
             console.log("Selected " + clickedItem + ".")
-            console.log("Final result:")
-            console.log(gamesOn)
+            console.log("Games on:" + JSON.stringify(gamesOn))
         }
-        // Create functions to add departments.
+        // Choose departments.
         function selectCategory(){
             const clickedItem = event.target.id            
             if (departmentsOn.indexOf(clickedItem) <= -1) {
@@ -113,33 +111,32 @@
                 event.target.classList.remove("itemOn")
                 console.log("Removed " + clickedItem + ".")
             }
-            console.log("Final result:")
-            console.log(departmentsOn)
-        }        
+            console.log("Departments on:" + JSON.stringify(departmentsOn))
+        }   
         // When user clicks the 'play' button...
         function play(){
+            // Modify the instructions.
+            document.getElementById('gamesInstructions').innerHTML = "Let's play:"
+            document.getElementById('departmentsInstructions').innerHTML = "Categories include:"
+            document.getElementById('playInstructions').innerHTML = ""
             // Display selected categories only.
-            document.getElementById('games').innerHTML = ""
-            for (i=0;i<gamesOn.length;i++) {
-                document.getElementById('games').innerHTML += 
-                "<div id='" + gamesOn[i] + "' class='itemOn'>" + gamesOn[i] + "</div>";
-            }
+            document.getElementById('games').innerHTML = "<div class='itemOn'>" + gamesOn[0] + "</div>"
             document.getElementById('departments').innerHTML = ""
             for (i=0;i<departmentsOn.length;i++) {
                 document.getElementById('departments').innerHTML += 
                 "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
             }
-            // Modify the instructions.
-            document.getElementById('gamesInstructions').innerHTML = "Let's play:"
-            document.getElementById('departmentsInstructions').innerHTML = "Categories include:"
-            document.getElementById('playInstructions').innerHTML = ""
             // Display game prompts.
             event.target.classList.remove("colorful")
+            // Randomly select one of active departments, and find its index.
+            var randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
+            console.log(departmentsOn.findIndex(randomDepartmentOn))
+            // For that department, randomly select one of 
+            var randomPromptOn = {}
+            // Display the prompt.
             for (i=0;i<departmentsOn.length;i++) {
+                document.getElementById('playArea').innerHTML = allPrompts[1].ceramics[1]
             }
-            console.log(JSON.stringify.allPrompts)
-            console.log('hi')
-            // document.getElementById('playArea').innerHTML = JSON.stringify.allPrompts["ceramics"][1]
         }
     </script>
     
