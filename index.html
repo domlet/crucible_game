@@ -139,6 +139,9 @@
             } else if (departmentsOn.length == 0 | undefined) {
                 document.getElementById('departmentsInstructions').innerHTML = "<span class='alert'> Please select a department:"
             } else {
+                // Hide some instructions.
+                document.getElementById('gamesInstructions').innerHTML = ""
+                document.getElementById('departmentsInstructions').innerHTML = ""
                 // Display selected categories only.
                 document.getElementById('games').innerHTML = "<div class='itemOn'>" + gamesOn[0] + "</div>"
                 document.getElementById('departments').innerHTML = ""
