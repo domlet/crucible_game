@@ -28,9 +28,13 @@ div {
     font-weight: bold;
     cursor: pointer;
 }
-#play div {
+#prompts div {
+    width:90%;
+    padding:  1em 2em;
+    text-align: center;
+}
+#prompts span {
     font-size: 350%;
-    padding: .1em 1em;
 }
 a {
     color: white;

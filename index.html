@@ -17,7 +17,15 @@
     <!-- DEPARTMENTS -->
     <div id="departmentsInstructions" class="instructions">Departments:</div>
     <div id="departments" class="options"></div>
-    
+    <!-- PROMPTS -->
+    <div id="playInstructions" class="instructions">Click for a prompt:</div>
+    <div id="prompts" class="options" onclick='play()'>
+        <div id="prompts" class="colorful" onclick='play()'>
+            <span id="promptArea" class="options">play</span>
+        </div>
+    </div>
+    <div class="instructions"><a href="" onclick="">Start over</a>.</div>
+
     <script>
         const games = [
             "Charades",
@@ -33,39 +41,39 @@
         ]
         const allPrompts = {
             'Blacksmithing' : [
-                "sample blacksmithing prompt 1",
-                "sample blacksmithing prompt 2",
-                "sample blacksmithing prompt 3" ],
+                "Sample blacksmithing prompt 1.",
+                "Sample blacksmithing prompt 2.",
+                "Sample blacksmithing prompt 3." ],
             'Ceramics' : [
-                "score and slip",
-                "use two pinched pots to handbuild a head and body",
-                "use sticks to roll a slab with even thickness",
-                "build a bowl using a coil and a mold",
-                "pieces are most brittle when they are bone dry",
-                "clean your tools and put them away",
-                "wipe down your work surface with a large sponge",
-                "silica dust is harmful to inhale",
-                "don't forget about a piece you put in front of a fan",
-                "when you paint on the glaze, everything appears green",
-                "use a stamp to create a pattern on the clay",
-                "a piece with an air bubble can explode in the kiln" ],
+                "Use the 'score and slip' method to connect two pieces.",
+                "Use two pinched pots to handbuild a head and body.",
+                "Use sticks to roll a slab with even thickness.",
+                "Build a bowl using a coil and a mold.",
+                "Pieces are most brittle when they are bone dry.",
+                "Clean your tools and put them away.",
+                "Wipe down your work surface with a large wet sponge.",
+                "Silica dust is harmful to inhale.",
+                "Don't forget about a piece you put in front of a fan.",
+                "When you paint on the glaze, everything appears green.",
+                "Use a stamp to create a pattern on the clay.",
+                "An air bubble can cause a piece to explode in the kiln." ],
             'Foundry' : [
-                "sample foundry prompt 1",
-                "sample foundry prompt 2",
-                "sample foundry prompt 3" ],
+                "Sample foundry prompt 1.",
+                "Sample foundry prompt 2.",
+                "Sample foundry prompt 3." ],
             'Jewelry' : [
-                "sample jewelry prompt 1",
-                "sample jewelry prompt 2",
-                "sample jewelry prompt 3" ],
+                "Sample jewelry prompt 1.",
+                "Sample jewelry prompt 2.",
+                "Sample jewelry prompt 3." ],
             'Kinetics and Electronics' : [
-                "sample kinetics and electronics prompt 1",
-                "sample kinetics and electronics prompt 2",
-                "sample kinetics and electronics prompt 3" ],
+                "Sample kinetics and electronics prompt 1.",
+                "Sample kinetics and electronics prompt 2.",
+                "Sample kinetics and electronics prompt 3." ],
             'Woodworking' : [
-                "using a gouge against the grain",
-                "never drop a gouge on the concrete floor",
-                "trace a pattern onto a piece of wood",
-                "seal a project " ]
+                "Use a gouge to cut against the grain.",
+                "What happens when you drop a gouge on a concrete floor?",
+                "Use tracing paper to draw a pattern onto the wood.",
+                "Seal a project to keep the wood clean." ]
         }
         // List all games.
         for (i=0;i<games.length;i++) {
@@ -117,21 +125,13 @@
                 "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
             }
             // Display game prompts.
-            event.target.classList.remove("colorful")
-            // Randomly select an active department, prompt, and display the prompt.
-            // let randomDepartmentOn = JSON.stringify(departmentsOn[Math.floor(Math.random() * departmentsOn.length)]);
+            // event.target.classList.remove("colorful")
             let randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
             let promptsOn = allPrompts[randomDepartmentOn]
             let randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
-            document.getElementById('playArea').innerHTML = randomPromptOn
+            document.getElementById('promptArea').innerHTML = randomPromptOn
         }
     </script>
-    
-    <div id="playInstructions" class="instructions">Click:</div>
-        <div id="play" class="options">
-            <div id="playArea" onclick='play()' class="colorful">play</div>
-        </div>
-    <div class="instructions"><a href="" onclick="">Start over</a>.</div>
 
 </body>
 </html>
