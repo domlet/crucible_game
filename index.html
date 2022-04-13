@@ -12,10 +12,10 @@
 <body>
     
     <!-- GAMES -->
-    <div id="gamesInstructions" class="instructions">Game:</div>
+    <div id="gamesInstructions" class="instructions">Choose a game:</div>
     <div id="games" class="options"></div>
     <!-- DEPARTMENTS -->
-    <div id="departmentsInstructions" class="instructions">Departments:</div>
+    <div id="departmentsInstructions" class="instructions">Choose departments:</div>
     <div id="departments" class="options"></div>
     <!-- PROMPTS -->
     <div id="playInstructions" class="instructions">Click for a prompt:</div>
@@ -42,15 +42,15 @@
         const allPrompts = {
             'Blacksmithing' : [
                 "Bend metal by heating it, holding it over the anvil horn, and striking it with a hammer.",
-                "Use a punching tool softly on a hot spot until you feel resistance from the anvil",
+                "Use a punching tool softly on a hot spot until you feel resistance from the anvil.",
                 "Use tongs to hold your piece on the anvil and hammer both sides to extend the length.",
                 "Anneal metal by heating it in the forge and cooling it down very slowly in sand.",
                 "Harden metal by heating it its highest temperature, then rapidly cooling it in a liquid.",
-                "Demonstrate hitting techniques with a series of hard blows, soft taps, or a combination of both.",
+                "Hitting techniques can include a series of hard blows, soft taps, or a combination of both.",
                 "Quench hot metal by submerging it straight into liquid to prevent distortion.",
-                "Quench one side of a piece so you can work only the opposite side.",
+                "Quench one side of a piece so you can work the opposite side.",
                 "Cut metal by striking a hot cut chisel into hot, bright yellow material.",
-                "When cutting metal, remember to regularly quench the chisel to cool it off.",
+                "Regularly quench the chisel when you are cutting metal.",
                 "Use a sacrificial piece of scrap metal to protect your anvil and chisel when you are cutting.",
                 "Shape metal by heating it, then striking it with a hammer against the anvil." ],
             'Ceramics' : [
@@ -68,26 +68,25 @@
                 "An air bubble can cause a piece to explode in the kiln." ],
             'Foundry' : [
                 "European foundries in 14th & 15th centuries produced bells, canons, and cannon balls.",
-                "In a foundry, you can create objects by melting metal, pouring it into a mold, and letting it cool.",
-                "Foundry workers who operate a forklift are required to have a certification.",
+                "Create an object by melting metal, pouring it into a mold, and letting it cool.",
+                "Get a certification to operate a forklift.",
                 "Ventilate a space and wear a respirator to reduce health risks in a foundry." ],
             'Jewelry' : [
                 "Jewelers should sit at eye level with the bench peg, to avoid hunching over their work.",
-                "Ancient Egyptians decorated tombs and mummies with jewelry featuring ornate gems and stone-carved symbols.",
-                "Get started with a jeweler’s saw, flush cutter, round nose pliers, flat nose pliers, and chain nose pliers.",
-                "Strike a nail with a ball-peen hammer to adorn metal with a nail stamping technique.",
+                "Ancient Egyptians decorated mummies with ornate jewelry and talismans.",
+                "Lubricate your jeweler's saw blade.",
                 "Throw a patina on metal before scratching it, to create more interesting contrast." ],
             'Bike Shop' : [
-                "When you add a new chain link, it will be stiff. Work it back and forth until it bends around the gears.",
-                "Clean and degrease a dirty chain with a rag and cleaning solvent.",
-                "Inspect the tube and tire for metal or glass that may have caused the tire to flat.",
-                "Find the source of a flat tire by spraying the tube with water and watching for air bubbles.",
-                "Dust the area around a tube patch with a small amount of chalk before putting the tube in the tire." ],
+                "Work out the stiffness a new chain link.",
+                "Clean and degrease a dirty chain.",
+                "Inspect two bike parts for the cause of a flat tire.",
+                "Spray the tube with water and watch for air bubbles.",
+                "Use chalk to dust the area around a tube patch." ],
             'Woodworking' : [
                 "Use a gouge to cut against the grain.",
                 "What happens when you drop a gouge on a concrete floor?",
                 "Use tracing paper to draw a pattern on your wood.",
-                "Seal a project to keep the wood clean." ]
+                "Seal a woodworking project to protect the surface from dirt." ]
         }
         // List all games.
         for (i=0;i<games.length;i++) {
@@ -135,15 +134,11 @@
         function play(){
             if (gamesOn.length == 0 | undefined && departmentsOn.length == 0 | undefined) {
                 document.getElementById('gamesInstructions').classList.add('alert')
-                document.getElementById('gamesInstructions').innerHTML = "Please select a game:"
                 document.getElementById('departmentsInstructions').classList.add('alert')
-                document.getElementById('departmentsInstructions').innerHTML = "Please select a department:"
             } else if (gamesOn.length == 0 | undefined) {
                 document.getElementById('gamesInstructions').classList.add('alert')
-                document.getElementById('gamesInstructions').innerHTML = "Please select a game:"
             } else if (departmentsOn.length == 0 | undefined) {
                 document.getElementById('departmentsInstructions').classList.add('alert')
-                document.getElementById('departmentsInstructions').innerHTML = "Please select a department:"
             } else {
                 // Hide some instructions.
                 document.getElementById('gamesInstructions').innerHTML = ""
@@ -163,6 +158,13 @@
                 document.getElementById('promptArea').innerHTML = randomPromptOn
             }
         }
+        // To do (high priority):
+        // - change from random prompt to randomized prompt array with sequential progression
+        // - implement mobile-friendly formatting
+        // To-do (low priority):
+        // - add instructions for pictionary ('draw it') and charades ('act it out')
+        // - add ability to create a new category (with 5 new prompts) which should be emailed to me
+        // - add countdown clock to prompt (60 seconds)
     </script>
 
 </body>
