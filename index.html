@@ -12,10 +12,10 @@
 <body>
     
     <!-- GAMES -->
-    <div id="gamesInstructions" class="instructions">Choose game:</div>
+    <div id="gamesInstructions" class="instructions">Game:</div>
     <div id="games" class="options"></div>
     <!-- DEPARTMENTS -->
-    <div id="departmentsInstructions" class="instructions">Choose departments:</div>
+    <div id="departmentsInstructions" class="instructions">Departments:</div>
     <div id="departments" class="options"></div>
     
     <script>
@@ -44,7 +44,7 @@
                 "build a bowl using a coil and a mold",
                 "pieces are most brittle when they are bone dry",
                 "clean your tools and put them away",
-                "wipe down your canvas with a large sponge",
+                "wipe down your work surface with a large sponge",
                 "silica dust is harmful to inhale",
                 "don't forget about a piece you put in front of a fan",
                 "when you paint on the glaze, everything appears green",
@@ -128,15 +128,11 @@
             }
             // Display game prompts.
             event.target.classList.remove("colorful")
-            // Randomly select one of active departments, and find its index.
+            // Randomly select an active department, prompt, and display the prompt.
             var randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
-            console.log(departmentsOn.findIndex(randomDepartmentOn))
-            // For that department, randomly select one of 
-            var randomPromptOn = {}
-            // Display the prompt.
-            for (i=0;i<departmentsOn.length;i++) {
-                document.getElementById('playArea').innerHTML = allPrompts[1].ceramics[1]
-            }
+            var promptsOn = allPrompts[1]['ceramics']
+            var randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
+            document.getElementById('playArea').innerHTML = randomPromptOn
         }
     </script>
     
