@@ -112,6 +112,7 @@
             gamesOn.splice(0, gamesOn.length)
             gamesOn.push(clickedItem)
             event.target.classList.add("itemOn")
+            document.getElementById('gamesInstructions').classList.remove("alert")
             console.log("Selected " + clickedItem + ".")
             console.log("Games on:" + JSON.stringify(gamesOn))
         }
@@ -121,6 +122,7 @@
             if (departmentsOn.indexOf(clickedItem) <= -1) {
                 departmentsOn.push(clickedItem)
                 event.target.classList.add("itemOn")
+                document.getElementById('departmentsInstructions').classList.remove("alert")
                 console.log("Added " + clickedItem + ".")
             } else {
                 departmentsOn = departmentsOn.filter(department => department !== (clickedItem))
@@ -132,12 +134,16 @@
         // When user clicks the 'play' button...
         function play(){
             if (gamesOn.length == 0 | undefined && departmentsOn.length == 0 | undefined) {
-                document.getElementById('gamesInstructions').innerHTML = "<span class='alert'> Please select a game:"
-                document.getElementById('departmentsInstructions').innerHTML = "<span class='alert'> Please select a department:"
+                document.getElementById('gamesInstructions').classList.add('alert')
+                document.getElementById('gamesInstructions').innerHTML = "Please select a game:"
+                document.getElementById('departmentsInstructions').classList.add('alert')
+                document.getElementById('departmentsInstructions').innerHTML = "Please select a department:"
             } else if (gamesOn.length == 0 | undefined) {
-                document.getElementById('gamesInstructions').innerHTML = "<span class='alert'> Please select a game:"
+                document.getElementById('gamesInstructions').classList.add('alert')
+                document.getElementById('gamesInstructions').innerHTML = "Please select a game:"
             } else if (departmentsOn.length == 0 | undefined) {
-                document.getElementById('departmentsInstructions').innerHTML = "<span class='alert'> Please select a department:"
+                document.getElementById('departmentsInstructions').classList.add('alert')
+                document.getElementById('departmentsInstructions').innerHTML = "Please select a department:"
             } else {
                 // Hide some instructions.
                 document.getElementById('gamesInstructions').innerHTML = ""
