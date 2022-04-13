@@ -1,6 +1,7 @@
 body {
     font-family: Hind, Arial, Helvetica, sans-serif;
     font-size:x-large;
+    font-weight: bold;
     margin: 3em;
     background-color: black;
     color: whitesmoke;
@@ -27,6 +28,9 @@ div {
     border-radius: .5em;
     font-weight: bold;
     cursor: pointer;
+}
+.alert {
+    color:#ee6055;
 }
 #prompts div {
     width:90%;

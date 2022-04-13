@@ -117,19 +117,28 @@
         }   
         // When user clicks the 'play' button...
         function play(){
-            // Display selected categories only.
-            document.getElementById('games').innerHTML = "<div class='itemOn'>" + gamesOn[0] + "</div>"
-            document.getElementById('departments').innerHTML = ""
-            for (i=0;i<departmentsOn.length;i++) {
-                document.getElementById('departments').innerHTML += 
-                "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
+            if (gamesOn.length == 0 | undefined && departmentsOn.length == 0 | undefined) {
+                document.getElementById('gamesInstructions').innerHTML = "<span class='alert'> Please select a game:"
+                document.getElementById('departmentsInstructions').innerHTML = "<span class='alert'> Please select a department:"
+            } else if (gamesOn.length == 0 | undefined) {
+                document.getElementById('gamesInstructions').innerHTML = "<span class='alert'> Please select a game:"
+            } else if (departmentsOn.length == 0 | undefined) {
+                document.getElementById('departmentsInstructions').innerHTML = "<span class='alert'> Please select a department:"
+            } else {
+                // Display selected categories only.
+                document.getElementById('games').innerHTML = "<div class='itemOn'>" + gamesOn[0] + "</div>"
+                document.getElementById('departments').innerHTML = ""
+                for (i=0;i<departmentsOn.length;i++) {
+                    document.getElementById('departments').innerHTML += 
+                    "<div id='" + departmentsOn[i] + "' class='itemOn'>" + departmentsOn[i] + "</div>";
+                }
+                // Display game prompts.
+                // event.target.classList.remove("colorful")
+                let randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
+                let promptsOn = allPrompts[randomDepartmentOn]
+                let randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
+                document.getElementById('promptArea').innerHTML = randomPromptOn
             }
-            // Display game prompts.
-            // event.target.classList.remove("colorful")
-            let randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
-            let promptsOn = allPrompts[randomDepartmentOn]
-            let randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
-            document.getElementById('promptArea').innerHTML = randomPromptOn
         }
     </script>
 
