@@ -24,20 +24,19 @@
             "Pictionary"
         ]
         const departments = [
-            "blacksmithing",
-            "ceramics",
-            "foundry",
-            "jewelry",
-            "kinetics and electronics", // spaces cause a problem for id
-            "woodworking"
+            "Blacksmithing",
+            "Ceramics",
+            "Foundry",
+            "Jewelry",
+            "Kinetics and Electronics", // spaces cause a problem for id
+            "Woodworking"
         ]
-        const allPrompts = [
-            { 'blacksmithing' : [
+        const allPrompts = {
+            'Blacksmithing' : [
                 "sample blacksmithing prompt 1",
                 "sample blacksmithing prompt 2",
-                "sample blacksmithing prompt 3" ]
-            },
-            { 'ceramics' : [
+                "sample blacksmithing prompt 3" ],
+            'Ceramics' : [
                 "score and slip",
                 "use two pinched pots to handbuild a head and body",
                 "use sticks to roll a slab with even thickness",
@@ -49,30 +48,25 @@
                 "don't forget about a piece you put in front of a fan",
                 "when you paint on the glaze, everything appears green",
                 "use a stamp to create a pattern on the clay",
-                "a piece with an air bubble can explode in the kiln" ]
-            },
-            { 'foundry' : [
+                "a piece with an air bubble can explode in the kiln" ],
+            'Foundry' : [
                 "sample foundry prompt 1",
                 "sample foundry prompt 2",
-                "sample foundry prompt 3" ]
-            },
-            { 'jewelry' : [
+                "sample foundry prompt 3" ],
+            'Jewelry' : [
                 "sample jewelry prompt 1",
                 "sample jewelry prompt 2",
-                "sample jewelry prompt 3" ]
-            },
-            { 'kineticsandelectronics' : [
+                "sample jewelry prompt 3" ],
+            'Kinetics and Electronics' : [
                 "sample kinetics and electronics prompt 1",
                 "sample kinetics and electronics prompt 2",
-                "sample kinetics and electronics prompt 3" ]
-            },
-            { 'woodworking' : [
+                "sample kinetics and electronics prompt 3" ],
+            'Woodworking' : [
                 "using a gouge against the grain",
                 "never drop a gouge on the concrete floor",
                 "trace a pattern onto a piece of wood",
                 "seal a project " ]
-            }
-        ]
+        }
         // List all games.
         for (i=0;i<games.length;i++) {
             document.getElementById('games').innerHTML += 
@@ -115,10 +109,6 @@
         }   
         // When user clicks the 'play' button...
         function play(){
-            // Modify the instructions.
-            document.getElementById('gamesInstructions').innerHTML = "Let's play:"
-            document.getElementById('departmentsInstructions').innerHTML = "Categories include:"
-            document.getElementById('playInstructions').innerHTML = ""
             // Display selected categories only.
             document.getElementById('games').innerHTML = "<div class='itemOn'>" + gamesOn[0] + "</div>"
             document.getElementById('departments').innerHTML = ""
@@ -129,9 +119,10 @@
             // Display game prompts.
             event.target.classList.remove("colorful")
             // Randomly select an active department, prompt, and display the prompt.
-            var randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
-            var promptsOn = allPrompts[1]['ceramics']
-            var randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
+            // let randomDepartmentOn = JSON.stringify(departmentsOn[Math.floor(Math.random() * departmentsOn.length)]);
+            let randomDepartmentOn = departmentsOn[Math.floor(Math.random() * departmentsOn.length)];
+            let promptsOn = allPrompts[randomDepartmentOn]
+            let randomPromptOn = promptsOn[Math.floor(Math.random() * promptsOn.length)];
             document.getElementById('playArea').innerHTML = randomPromptOn
         }
     </script>

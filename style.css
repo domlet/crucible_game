@@ -1,6 +1,6 @@
 body {
     font-family: Hind, Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size:x-large;
     margin: 3em;
     background-color: black;
     color: whitesmoke;
@@ -29,7 +29,7 @@ div {
     cursor: pointer;
 }
 #play div {
-    font-size: 500%;
+    font-size: 350%;
     padding: .1em 1em;
 }
 a {
